@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.4-cli
 
 RUN apt-get update && apt-get install -y \
     zip unzip git \
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN docker-php-ext-install pdo_mysql
 
-COPY . /var/www/html
-RUN chown -R www-data:www-data /var/www/html
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-EXPOSE 80
+COPY . /app
+WORKDIR /app
