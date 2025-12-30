@@ -4,20 +4,20 @@ namespace Clases;
 
 final class Database
 {
-    // Leer de variables de entorno o usar valores por defecto para Docker local
+    // Buscar con ambos nombres posibles de variables
     private static function getDbHost(): string
     {
-        return getenv('MYSQL_HOST') ?: 'db';
+        return getenv('MYSQL_HOST') ?: getenv('MYSQLHOST') ?: 'db';
     }
     
     private static function getDbUser(): string
     {
-        return getenv('MYSQL_USER') ?: 'root';
+        return getenv('MYSQL_USER') ?: getenv('MYSQLUSER') ?: 'root';
     }
     
     private static function getDbPass(): string
     {
-        return getenv('MYSQL_PASSWORD') ?: 'root';
+        return getenv('MYSQL_PASSWORD') ?: getenv('MYSQLPASSWORD') ?: 'root';
     }
     
     private static function getDbName(): string
@@ -27,7 +27,7 @@ final class Database
     
     private static function getDbPort(): string
     {
-        return getenv('MYSQL_PORT') ?: '3306';
+        return getenv('MYSQL_PORT') ?: getenv('MYSQLPORT') ?: '3306';
     }
 
     private static ?\PDO $conection = null;
