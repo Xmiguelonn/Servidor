@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Jugadores libres</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+		<link rel="stylesheet" href="/vistas/styles/home.css?v=1">
+	</head>
+
+	<body>
+
+		<div class="container py-4">
+			<div class="d-flex justify-content-end gap-2 mb-4 top-buttons">
+				<a href="/home" class="btn btn-outline-light btn-sm">Home</a>
+				<a href="/logout" class="btn btn-danger btn-sm">Cerrar sesión</a>
+			</div>
+
+			<h1 class="text-center mb-4 title-glow">Jugadores Libres</h1>
+
+			<h3 class="text-center mb-4">
+				Jugadores libres:
+				<span class="text-warning">{{ totalLibres }}</span>
+			</h3>
+
+			<div class="text-end mb-3">
+				<a href="/jugador/nuevo" class="btn btn-success">
+					Añadir jugador
+				</a>
+			</div>
+
+			<div class="inazuma-card p-3 rounded">
+
+				<table class="table table-dark table-striped align-middle">
+					<thead>
+						<tr class="text-warning">
+							<th>Imagen</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Dorsal</th>
+							<th>Posición</th>
+							<th>Elemento</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{% for jugador in jugadores %}
+							<tr>
+								<td>
+									<img src="{{ jugador.imagen }}" alt="Jugador" width="70" class="img-fluid rounded border">
+								</td>
+								<td>{{ jugador.nombre }}</td>
+								<td>{{ jugador.apellido }}</td>
+								<td>{{ jugador.dorsal }}</td>
+								<td>{{ jugador.posicion }}</td>
+								<td>{{ jugador.elementoAEmoji(jugador.elemento) }}</td>
+
+								<td
+									class="d-flex gap-2">
+
+									<a href="/jugador/fichar/{{ jugador.codJug }}" class="btn btn-primary btn-sm">
+										Fichar
+									</a>
+
+									{% if rol == "admin" %}
+										<a href="/jugador/editar/{{ jugador.codJug }}" class="btn btn-warning btn-sm">
+											Editar
+										</a>
+
+										<a href="/jugador/eliminar/{{ jugador.codJug }}" class="btn btn-danger btn-sm">
+											Eliminar
+										</a>
+									{% endif %}
+
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+			</div>
+
+			<div class="footer-inazuma">
+				Miguel Ángel Postigo Bernal | 2ºDAW
+			</div>
+
+		</div>
+
+	</body>
+</html>

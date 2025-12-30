@@ -1,0 +1,79 @@
+RewriteEngine On
+
+# Ruta principal: / → muestra el formulario de registro
+RewriteRule ^$ index.php?modelo=usuario&metodo=registro [QSA,L]
+
+# Registro
+RewriteRule ^registro$ index.php?modelo=usuario&metodo=registro [QSA,L]
+
+# # Login
+RewriteRule ^login$ index.php?modelo=usuario&metodo=login [QSA,L]
+
+# Home
+RewriteRule ^home$ index.php?modelo=home&metodo=index [QSA,L]
+
+# Cerrar sesión
+RewriteRule ^logout$ index.php?modelo=auth&metodo=logout [QSA,L]
+
+# Crear equipo
+RewriteRule ^equipo/crear$ index.php?modelo=equipo&metodo=crear
+
+#Guardar equipo
+RewriteRule ^equipo/guardar$ index.php?modelo=equipo&metodo=guardar [QSA,L]
+
+#Detalles del equipo
+RewriteRule ^equipo/detalles/([0-9]+)$ index.php?modelo=equipo&metodo=detalles&id=$1 [QSA,L]
+
+#Editar equipo - formulario
+RewriteRule ^equipo/editar/([0-9]+)$ index.php?modelo=equipo&metodo=editar&id=$1 [QSA,L]
+
+#Guardar edición
+RewriteRule ^equipo/actualizar$ index.php?modelo=equipo&metodo=actualizar [QSA,L]
+
+# Eliminar equipo
+RewriteRule ^equipo/eliminar/([0-9]+)$ index.php?modelo=equipo&metodo=eliminar&id=$1 [QSA,L]
+
+# Expulsar jugador
+RewriteRule ^jugador/expulsar/([0-9]+)$ index.php?modelo=jugador&metodo=expulsar&id=$1 [QSA,L]
+
+# Nuevo jugador - formulario
+RewriteRule ^jugador/nuevo$ index.php?modelo=jugador&metodo=nuevo [QSA,L]
+
+# Crear al jugador
+RewriteRule ^jugador/crear$ index.php?modelo=jugador&metodo=crear [QSA,L]
+
+# Fichar al jugador
+RewriteRule ^jugador/libres$ index.php?modelo=jugador&metodo=libres [QSA,L]
+
+# accion de fichar
+RewriteRule ^jugador/fichar/([0-9]+)$ index.php?modelo=jugador&metodo=fichar&id=$1 [QSA,L]
+
+#Editar - formulario
+RewriteRule ^jugador/editar/([0-9]+)$ index.php?modelo=jugador&metodo=editar&id=$1 [QSA,L]
+
+#Editar - procesar cambios
+RewriteRule ^jugador/actualizar$ index.php?modelo=jugador&metodo=actualizar [QSA,L]
+
+# Eliminar jugador
+RewriteRule ^jugador/eliminar/([0-9]+)$ index.php?modelo=jugador&metodo=eliminar&id=$1 [QSA,L]
+
+# Listado de equipos
+RewriteRule ^equipos$ index.php?modelo=equipo&metodo=listar [QSA,L]
+
+# Listado de usuarios - SOLO ADMIN
+RewriteRule ^admin/usuarios$ index.php?modelo=usuario&metodo=listar [QSA,L]
+
+# Formulario de usuario nuevo - SOLO ADMIN
+RewriteRule ^admin/usuario/nuevo$ index.php?modelo=usuario&metodo=nuevo [QSA,L]
+
+# Agregar al usuario nuevo
+RewriteRule ^admin/usuario/crear$ index.php?modelo=usuario&metodo=crear [QSA,L]
+
+# Formulario de editar usuario - SOLO ADMIN
+RewriteRule ^admin/usuario/editar/([0-9]+)$ index.php?modelo=usuario&metodo=editar&id=$1 [QSA,L]
+
+# Aplicar los cambios a la base de datos
+RewriteRule ^admin/usuario/actualizar$ index.php?modelo=usuario&metodo=actualizar [QSA,L]
+
+# Eliminar al usuario
+RewriteRule ^admin/usuario/eliminar/([0-9]+)$ index.php?modelo=usuario&metodo=eliminar&id=$1 [QSA,L]
