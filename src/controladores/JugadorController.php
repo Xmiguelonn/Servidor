@@ -237,4 +237,50 @@ final class JugadorController extends BaseController
             Request::redirect("/jugador/libres");
         }
     }
+
+    public function eliminar()
+    {
+        if (!Sesion::isLogged()) {
+            Request::redirect("/");
+        }
+
+        $id = (int) ($_GET["id"] ?? 0);
+
+        if ($id <= 0) {
+            Request::redirect("/home");
+        }
+
+        $jugador = Jugador::getById($id);
+
+        if (!$jugador) {
+            Request::redirect("/home");
+        }
+
+        $usuario = Usuario::getById(Sesion::getId());
+
+
+        if ($jugador->codEqui === null) {
+
+            if ($usuario->rol !== 'admin') {
+                Request::redirect("/home");
+            }
+
+            Jugador::deletePlayer($jugador->codJug);
+            Request::redirect("/home");
+        }
+
+
+        $equipo = Equipo::getById($jugador->codEqui);
+
+        if (!$equipo) {
+            Request::redirect("/home");
+        }
+
+        if ($equipo->codUsu !== $usuario->idUsr && $usuario->rol !== 'admin') {
+            Request::redirect("/home");
+        }
+
+        Jugador::deletePlayer($jugador->codJug);
+        Request::redirect("/home");
+    }
 }

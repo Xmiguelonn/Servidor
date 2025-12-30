@@ -54,6 +54,9 @@ RewriteRule ^jugador/editar/([0-9]+)$ index.php?modelo=jugador&metodo=editar&id=
 #Editar - procesar cambios
 RewriteRule ^jugador/actualizar$ index.php?modelo=jugador&metodo=actualizar [QSA,L]
 
+# Eliminar jugador
+RewriteRule ^jugador/eliminar/([0-9]+)$ index.php?modelo=jugador&metodo=eliminar&id=$1 [QSA,L]
+
 # Listado de equipos
 RewriteRule ^equipos$ index.php?modelo=equipo&metodo=listar [QSA,L]
 
@@ -67,10 +70,10 @@ RewriteRule ^admin/usuario/nuevo$ index.php?modelo=usuario&metodo=nuevo [QSA,L]
 RewriteRule ^admin/usuario/crear$ index.php?modelo=usuario&metodo=crear [QSA,L]
 
 # Formulario de editar usuario - SOLO ADMIN
-RewriteRule ^admin/usuario/editar/([0-9]+) index.php?modelo=usuario&metodo=editar&id=$1 [QSA,L]
+RewriteRule ^admin/usuario/editar/([0-9]+)$ index.php?modelo=usuario&metodo=editar&id=$1 [QSA,L]
 
 # Aplicar los cambios a la base de datos
 RewriteRule ^admin/usuario/actualizar$ index.php?modelo=usuario&metodo=actualizar [QSA,L]
 
 # Eliminar al usuario
-RewriteRule ^admin/usuario/eliminar/([0-9]+) index.php?modelo=usuario&metodo=eliminar&id=$1 [QSA,L]
+RewriteRule ^admin/usuario/eliminar/([0-9]+)$ index.php?modelo=usuario&metodo=eliminar&id=$1 [QSA,L]

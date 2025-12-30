@@ -380,8 +380,35 @@ final class Jugador
             $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
 
             return $stmt->execute();
-        } catch (PDOException $e) {
-            die("**ERROR updatePlayer(): " . $e->getMessage());
+        } catch (PDOException $pdoe) {
+            die("**ERROR" . $pdoe->getMessage());
         }
     }
+
+    /**
+     * Summary of eliminar
+     * @param int $id
+     * @return bool
+     * 
+     * Eliminar a un jugador de la base de datos referenciado por ID
+     */
+    public static function deletePlayer(int $id): bool
+    {
+
+        try{
+
+            $pdo = Database::conectar();
+            $sql = "DELETE FROM Jugador WHERE cod_jug = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
+
+            return $stmt->execute();
+
+        } catch (PDOException $pdoe) {
+            die("**ERROR" . $pdoe->getMessage());
+        }
+
+    }
+
+
 }
