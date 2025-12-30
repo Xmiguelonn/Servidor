@@ -1,5 +1,7 @@
 {
     "require": {
-        "twig/twig": "^3.22"
+        "twig/twig": "^3.22",
+        "ext-mysqli": "*",
+        "ext-pdo_mysql": "*"
     }
 }
