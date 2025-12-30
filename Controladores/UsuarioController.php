@@ -6,7 +6,7 @@ use Clases\Auth;
 use Clases\Database;
 use Clases\Request;
 use Dom\CDATASection;
-use modelos\Usuario;
+use Modelos\Usuario;
 use PDOException;
 use Clases\Sesion;
 

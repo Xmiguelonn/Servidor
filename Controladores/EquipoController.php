@@ -3,12 +3,12 @@
 namespace Controladores;
 
 use Clases\Database;
-use modelos\Equipo;
+use Modelos\Equipo;
 use PDOException;
 use Clases\Sesion;
 use Clases\Request;
-use modelos\Jugador;
-use modelos\Usuario;
+use Modelos\Jugador;
+use Modelos\Usuario;
 use Twig\Node\Expression\Filter\RawFilter;
 
 final class EquipoController extends BaseController

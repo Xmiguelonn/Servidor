@@ -3,12 +3,12 @@
 namespace Controladores;
 
 use Clases\Database;
-use modelos\Jugador;
-use modelos\Usuario;
+use Modelos\Jugador;
+use Modelos\Usuario;
 use PDOException;
 use Clases\Sesion;
 use Clases\Request;
-use modelos\Equipo;
+use Modelos\Equipo;
 
 final class JugadorController extends BaseController
 {

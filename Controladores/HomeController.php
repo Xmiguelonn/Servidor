@@ -4,8 +4,8 @@ namespace Controladores;
 
 use Clases\Request;
 use Clases\Sesion;
-use modelos\Usuario;
-use modelos\Equipo;
+use Modelos\Usuario;
+use Modelos\Equipo;
 
 final class HomeController extends BaseController
 {
