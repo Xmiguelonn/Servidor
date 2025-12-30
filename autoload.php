@@ -1,9 +1,14 @@
 <?php
 
-error_reporting(E_ALL & ~E_WARNING);
+spl_autoload_register(function ($clase) {
 
-spl_autoload_extensions(".php");
-spl_autoload_register();
+    // Convertir namespace a ruta
+    $ruta = __DIR__ . '/' . str_replace('\\', '/', $clase) . '.php';
 
+    if (file_exists($ruta)) {
+        require_once $ruta;
+    }
+});
 
+// Iniciar sesión automáticamente
 \Clases\Sesion::start();
